@@ -14,11 +14,13 @@ end
 
 bot.command :date do |event|
   dn = DateTime.now
+  dn = dn.new_offset(Rational(9,24))
   event.send_message("今日は#{dn.year}年#{dn.month}月#{dn.day}日です。")
 end
 
 bot.command :time do |event|
   dn = DateTime.now
+  dn = dn.new_offset(Rational(9,24))
   event.send_message("今は#{dn.hour}時#{dn.min}分#{dn.sec}秒です。")
 end
 
