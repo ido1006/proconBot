@@ -8,21 +8,18 @@ bot = Discordrb::Commands::CommandBot.new(
   prefix: '!',
 )
 
-loop do
-  dn = DateTime.now
-  sleep(30)
-end
-
 bot.command :hello do |event|
   event.send_message("#{event.user.name}さん、こんにちは！")
 end
 
 bot.command :date do |event|
+  dn = DateTime.now
   event.send_message("今日は#{dn.year}年#{dn.month}月#{dn.day}日です。")
 end
 
 bot.command :time do |event|
-  event.send_message("今は#{dn.hour}時#{dn.min}分です。")
+  dn = DateTime.now
+  event.send_message("今は#{dn.hour}時#{dn.min}分#{dn.sec}秒です。")
 end
 
 bot.run
