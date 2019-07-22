@@ -8,7 +8,7 @@ bot = Discordrb::Commands::CommandBot.new(
 )
 
 bot.command :hello do |event|
-  event.send_message("hello, #{event.user.name}.")
+  event.send_message("#{event.user.name}さん、こんにちは！")
 end
 
 bot.run
