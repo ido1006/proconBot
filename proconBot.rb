@@ -73,6 +73,16 @@ class ProconBot
       event.respond(weather_message)
     end
 
+    ### S先生の語録 ###
+    @bot.command :serizawa do |event|
+      event.respond(serizawa_message)
+    end
+
+    ### 音楽語録 ###
+    @bot.command :musicwords do |event|
+      event.respond(musicwords_message)
+    end
+
     ### ヘルプ ###
     @bot.command :help do |event|
       event.respond(help_message)
@@ -87,6 +97,7 @@ class ProconBot
     "d#{max} = #{val}"
   end
 
+  ### 天気の取得、作文 ###
   def weather_message
     uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{MISHIMA_CITY_ID}")
     response = Net::HTTP.get_response(uri)
@@ -105,14 +116,36 @@ class ProconBot
     message
   end
 
+  ### S先生語録の作文 ###
+  def serizawa_message
+    message = [
+       "大丈夫かなぁ〜？"
+      ,"ゲームばっかりしちゃって無い？"
+      ,"横着しちゃダメだよ〜！"
+      ,"分かる？この恐ろしさ！"
+      ,"君たちの為に言ってるんだからね！君たちがどうでも良ければ言わないからね！"
+    ]
+    message[rand(1..5)]
+  end
+
+  ### 音楽語録の作文 ###
+  def musicwords_message
+    message = "めんどくさいので工事中、誰か書いて"
+    message
+  end
+
+  ### へるぷ ###
   def help_message
     message  = "!ping : 速度チェック。\n"
     message += "!date : 日にちをお伝えします。\n"
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
     message += "!weather : 天気をお伝えします。\n"
+    message += "!serizawa : 芹沢語録をお伝えします。お伝えしろッ！孕めオラッ！\n"
+    message += "!musicwords : 音楽語録をお伝えしたいです。"
     message += "!help : これです。\n"
   end
+
 end
 
 proconBot = ProconBot.new
