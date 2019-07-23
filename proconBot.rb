@@ -75,7 +75,7 @@ class ProconBot
 
     ### ヘルプ ###
     @bot.command :help do |event|
-      event.respond(help_messsage)
+      event.respond(help_message)
     end
   end
 
