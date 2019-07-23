@@ -142,8 +142,9 @@ class ProconBot
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
     message += "!weather : 天気をお伝えします。\n"
     message += "!serizawa : 芹沢語録をお伝えします。お伝えしろッ！孕めオラッ！\n"
-    message += "!musicwords : 音楽語録をお伝えしたいです。"
+    message += "!musicwords : 音楽語録をお伝えしたいです。\n"
     message += "!help : これです。\n"
+    message += "SourceCode -> `https://github.com/ido1006/proconBot`\n"
   end
 
 end
