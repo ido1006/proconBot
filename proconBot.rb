@@ -81,7 +81,7 @@ class ProconBot
 
   ### サイコロの文 ###
   def dice_message(max: nil)
-    max || = 6
+    max ||= 6
     max = max.to_i.abs
     val = rand(1..max)
     "d#{max} = #{val}"
