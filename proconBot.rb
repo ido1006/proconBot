@@ -75,7 +75,7 @@ class ProconBot
 
     ### S先生の語録 ###
     @bot.command :serizawa do |event, first, second|
-      event.respond(serizawa_message(first: first, second: second)
+      event.respond(serizawa_message(first: first, second: second))
     end
 
     ### 音楽語録 ###
