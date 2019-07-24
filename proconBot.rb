@@ -1,8 +1,7 @@
+# coding: utf-8
 #####
 # proconBot.rb
 # This is a discord bot for my club members.
-#
-# coding: utf-8
 #
 # execute:
 #   ruby proconBot.rb
