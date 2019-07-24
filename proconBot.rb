@@ -79,8 +79,8 @@ class ProconBot
     end
 
     ### 音楽語録 ###
-    @bot.command :musicwords do |event|
-      event.respond(musicwords_message)
+    @bot.command :musicwords do |event, letter|
+      event.respond(musicwords_message(letter: letter))
     end
 
     ### ヘルプ ###
@@ -128,8 +128,77 @@ class ProconBot
   end
 
   ### 音楽語録の作文 ###
-  def musicwords_message
-    message = "めんどくさいので工事中、誰か書いて"
+  def musicwords_message(letter: letter)
+    message = ""
+    case letter
+    when "あ"
+      message += "挨拶は美しく\n"
+    when "い"
+      message += "一生懸命やれば大抵のことはできる\n"
+      message += "一生懸命やればおもしろくなる\n"
+      message += "一生懸命やれば誰かが助けてくれる\n"
+    when "う"
+      message += "歌はうったう訴える\n"
+    when "え"
+      message += "笑顔は音楽の扉\n"
+    when "お"
+      message += "音楽は最良の外交官\n"
+    when "か"
+      message += "外国では自国の伝統文化が表札\n"
+    when "き"
+      message += "嫌いなもの苦手なものほど一生懸命やれ\n"
+    when "く"
+      message += "苦悩を通して歓喜 L.V.Beethven\n"
+    when "け"
+      message += "謙虚にAllegro conbrio\n"
+    when "こ"
+      message += "心を耕すは文化なり\n"
+    when "さ"
+      message += "作曲はだいたい曲げて作るのだ\n"
+    when "し"
+      message += "親しくなればなるほど危険が増す\n"
+    when "す"
+      message += "すべて自然でないものは不完全である\n"
+    when "せ"
+      message += "声は生(声)命力\n"
+    when "そ"
+      message += "solo solo しっかりやろう\n"
+    when "た"
+      message += "他人と違う人間になれ\n"
+    when "ち"
+      message += "地上の芸術はすべて自己主張\n"
+    when "つ"
+      message += "尽きない好奇心を起こせ\n"
+    when "て"
+      message += "Take it easy.(気楽になれ)\n"
+    when "と"
+      message += "富と名声は危険な持物\n"
+    when "な"
+      message += "悩む力は生きる力\n"
+    when "に"
+      message += "人間はなりたいものしかなれない\n"
+    when "ぬ"
+      message += "抜き打ちにチャンス到来\n"
+    when "ね"
+      message += "労う言葉をかけろ！\n"
+    when "の"
+      message += "能率だけを求める能なし\n"
+    when "は"
+      message += "八方美人は美人か？\n"
+    when "ひ"
+      message += "人前で愚痴るな\n"
+      message += "人前で暗い顔するな\n"
+      message += "人と比べるな\n"
+    when "ふ"
+      message += "フクロウはすごい聴能力\n"
+    when "へ"
+      message += "平和は音楽のなかにこそある\n"
+    when "ほ"
+      message += "褒めて育てる\n"
+    else
+      message += "「あ」〜「ほ」までしか無いですよ\n"
+    end
+
     message
   end
 
