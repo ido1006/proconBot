@@ -74,8 +74,8 @@ class ProconBot
     end
 
     ### S先生の語録 ###
-    @bot.command :serizawa do |event|
-      event.respond(serizawa_message)
+    @bot.command :serizawa do |event, first, second|
+      event.respond(serizawa_message(first: first, second: second)
     end
 
     ### 音楽語録 ###
@@ -117,15 +117,14 @@ class ProconBot
   end
 
   ### S先生語録の作文 ###
-  def serizawa_message
-    message = [
-       "大丈夫かなぁ〜？",
-       "ゲームばっかりしちゃって無い？",
-       "横着しちゃダメだよ〜！",
-       "分かる？この恐ろしさ！",
-       "君たちの為を思って言ってるんだからね！君たちがどうでも良ければ言わないからね！"
-    ]
-    message[rand(0..4)]
+  def serizawa_message(first: nil, second: nil)
+    first ||= "勉強"
+    second ||= "ゲーム"
+    message  = "みんな大丈夫かなぁ〜？\n"
+    message += "ちゃんと#{first}やってる？\n"
+    message += "#{second}なんかにハマってないよね？\n"
+
+    message
   end
 
   ### 音楽語録の作文 ###
@@ -141,7 +140,7 @@ class ProconBot
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
     message += "!weather : 天気をお伝えします。\n"
-    message += "!serizawa : 芹沢語録をお伝えします。お伝えしろッ！孕めオラッ！\n"
+    message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えしたいです。\n"
     message += "!help : これです。\n"
     message += "SourceCode -> `https://github.com/ido1006/proconBot`\n"
