@@ -244,6 +244,8 @@ class ProconBot
   def hw_message(lang: lang)
     message = "```"
     case lang
+    when ""
+      message += "引数に好きなプログラミング言語を入力。"
     when "C"
       message += "#include <stdio.h>\n"
       message += "int main(void) {\n"
@@ -271,6 +273,7 @@ class ProconBot
     message += "!weather : 天気をお伝えします。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
+    message += "!helloworld : お好きな言語のhelloworldをお伝えします。欲しい言語があったらリクエストしてください\n"
     message += "!help : これです。\n"
     message += "SourceCode -> `https://github.com/ido1006/proconBot`\n"
   end
