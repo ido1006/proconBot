@@ -241,7 +241,7 @@ class ProconBot
     message
   end
 
-  def hw_message(lang: lang)
+  def hw_message(lang: nil)
     message = "```"
     case lang
     when ""
