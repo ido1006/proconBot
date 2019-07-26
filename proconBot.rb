@@ -82,6 +82,11 @@ class ProconBot
       event.respond(musicwords_message(letter: letter))
     end
 
+    ### HelloWorld ###
+    @bot.command :helloworld do |event, lang|
+      event.respond(hw_message(lang: lang))
+    end
+
     ### ヘルプ ###
     @bot.command :help do |event|
       event.respond(help_message)
@@ -233,6 +238,27 @@ class ProconBot
       message += "「あ」〜「ほ」を引数にしてください。\n"
       message += "「ん」で全部表示します。\n"
     end
+    message
+  end
+
+  def hw_message(lang: lang)
+    message = "```"
+    case lang
+    when "C"
+      message += "#include <stdio.h>\n"
+      message += "int main(void) {\n"
+      message += "  printf(\"Hello, World!\");"
+      message += "  return 0;"
+      message += "}"
+    when "C++"
+      message += "#include <iostream>\n"
+      message += "int main(void) {\n"
+      message += "  std::cout << \"Hello,World!\" << std::endl;"
+      message += "  return 0;"
+      message += "}"
+    end
+    message += "```"
+
     message
   end
 
