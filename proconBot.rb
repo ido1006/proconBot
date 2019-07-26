@@ -132,7 +132,7 @@ class ProconBot
   end
 
   ### 音楽語録の作文 ###
-  def musicwords_message(letter: letter)
+  def musicwords_message(letter: nil)
     message = ""
     case letter
     when "あ"
@@ -249,15 +249,15 @@ class ProconBot
     when "C"
       message += "#include <stdio.h>\n"
       message += "int main(void) {\n"
-      message += "  printf(\"Hello, World!\");"
-      message += "  return 0;"
-      message += "}"
+      message += "  printf(\"Hello, World!\");\n"
+      message += "  return 0;\n"
+      message += "}\n"
     when "C++"
       message += "#include <iostream>\n"
       message += "int main(void) {\n"
-      message += "  std::cout << \"Hello,World!\" << std::endl;"
-      message += "  return 0;"
-      message += "}"
+      message += "  std::cout << \"Hello,World!\" << std::endl;\n"
+      message += "  return 0;\n"
+      message += "}\n"
     end
     message += "```"
 
