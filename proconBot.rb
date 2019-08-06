@@ -93,7 +93,7 @@ class ProconBot
         rolename = name
         id = event.bot.parse_mention(mention.to_s).id.to_i
         user = event.server.member(id)
-        therole = event.server.ro;es.find {
+        therole = event.server.roles.find {
           |role| role.name == rolename
         }
         user.add_role(therole)
