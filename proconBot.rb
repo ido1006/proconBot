@@ -97,7 +97,7 @@ class ProconBot
           |role| role.name == rolename
         }
         user.add_role(therole)
-        event.respond("#{user.distinct}に#{rolename}を与えた"}
+        event.respond("#{user.distinct}に#{rolename}を与えた")
       end
     end
 
