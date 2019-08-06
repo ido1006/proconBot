@@ -86,6 +86,21 @@ class ProconBot
     @bot.command :help do |event|
       event.respond(help_message)
     end
+
+    @bot.command :role do |event, type, name|
+      case type
+      when 'join'
+        rolename = name
+        id = event.bot.parse_mention(mention.to_s).id.to_i
+        user = event.server.member(id)
+        therole = event.server.ro;es.find {
+          |role| role.name == rolename
+        }
+        user.add_role(therole)
+        event.respond("#{user.distinct}に#{rolename}を与えた"}
+      end
+    end
+
   end
 
   ### サイコロの文 ###
