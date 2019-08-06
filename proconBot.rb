@@ -108,9 +108,8 @@ class ProconBot
     message = ""
     forecasts.each { |f|
       max_temp = f.dig("temperature","max","celsius")
-      min_temp = f.dig("temperature","min","celsius")
       message += "#{f["dateLabel"]}（#{f["date"]}）の#{city}の天気は「#{f["telop"]}」"
-      message += "、最高気温は#{max_temp}℃、最低気温は#{min_temp}℃" unless (max_temp.nil && min_temp)?
+      message += "、最高気温は#{max_temp}℃" unless max_temp.nil?
       message += "\n"
     }
     message
