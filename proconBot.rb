@@ -82,11 +82,6 @@ class ProconBot
       event.respond(musicwords_message(letter: letter))
     end
 
-    ### HelloWorld ###
-    @bot.command :helloworld do |event, lang|
-      event.respond(hw_message(lang: lang))
-    end
-
     ### ヘルプ ###
     @bot.command :help do |event|
       event.respond(help_message)
@@ -241,29 +236,6 @@ class ProconBot
     message
   end
 
-  def hw_message(lang: nil)
-    message = "```"
-    case lang
-    when ""
-      message += "引数に好きなプログラミング言語を入力。"
-    when "C"
-      message += "#include <stdio.h>\n"
-      message += "int main(void) {\n"
-      message += "  printf(\"Hello, World!\");\n"
-      message += "  return 0;\n"
-      message += "}\n"
-    when "C++"
-      message += "#include <iostream>\n"
-      message += "int main(void) {\n"
-      message += "  std::cout << \"Hello,World!\" << std::endl;\n"
-      message += "  return 0;\n"
-      message += "}\n"
-    end
-    message += "```"
-
-    message
-  end
-
   ### へるぷ ###
   def help_message
     message  = "!ping : 速度チェック。\n"
@@ -273,7 +245,6 @@ class ProconBot
     message += "!weather : 天気をお伝えします。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
-    message += "!helloworld : お好きな言語のhelloworldをお伝えします。欲しい言語があったらリクエストしてください\n"
     message += "!help : これです。\n"
     message += "SourceCode -> `https://github.com/ido1006/proconBot`\n"
   end
