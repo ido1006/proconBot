@@ -140,7 +140,7 @@ class ProconBot
       selected_city = MISHIMA_CITY_ID
     end
 
-    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{selected_sity}")
+    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{selected_city}")
     response = Net::HTTP.get_response(uri)
     res_json = JSON.parse(response.body)
 
