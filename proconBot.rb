@@ -111,8 +111,9 @@ class ProconBot
 
   ### 天気の取得、作文 ###
   def weather_message(location: nil)
+    flag = 0
     case location
-    when "北海道", "札幌","sapporo" then
+    when "北海道","札幌","sapporo" then
       selected_city = SAPPORO_CITY_ID
     when "東北","仙台","sendai" then
       selected_city = SENDAI_CITY_ID
@@ -122,7 +123,7 @@ class ProconBot
       selected_city = TOKYO_CITY_ID
     when "横浜","yokohama" then
       selected_city = YOKOHAMA_CITY_ID
-    when "三島","mishima" then
+    when "三島","mishima","" then
       selected_city = MISHIMA_CITY_ID
     when "中部","名古屋","nagoya" then
       selected_city = NAGOYA_CITY_ID
@@ -137,7 +138,8 @@ class ProconBot
     when "沖縄","那覇","okinawa","naha" then
       selected_city = NAHA_CITY_ID
     else
-      selected_city = MISHIMA_CITY_ID
+      selected_city = TOKYO_CITY_ID
+      flag = 1
     end
 
     uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{selected_city}")
@@ -154,6 +156,9 @@ class ProconBot
       message += "、最高気温は#{max_temp}℃" unless max_temp.nil?
       message += "\n"
     }
+    if flag == 1 
+      message += "指定可能な地域を指定してください(とりあえず東京の天気流しました)"
+    end
     message
   end
 
