@@ -21,7 +21,20 @@ class ProconBot
   BOT_CLIENT_ID = ENV["CLIENT_ID"].freeze
 
   LIVEDOOR_WEATHER_API_HOST = "http://weather.livedoor.com/forecast/webservice/json/v1".freeze
+
+  SAPPORO_CITY_ID = 016010
+  SENDAI_CITY_ID = 040010
+  TOYAMA_CITY_ID = 160010
+  TOKYO_CITY_ID = 130010
+  YOKOHAMA_CITY_ID = 140010
   MISHIMA_CITY_ID = 220030
+  NAGOYA_CITY_ID = 230010
+  OSAKA_CITY_ID = 270000
+  HIROSHIMA_CITY_ID = 340010
+  MATSUYAMA_CITY_ID = 380010
+  FUKUOKA_CITY_ID = 400010
+  NAHA_CITY_ID = 471010
+
 
   def initialize
     @bot = Discordrb::Commands::CommandBot.new(client_id: BOT_CLIENT_ID, token: BOT_TOKEN, prefix: "!")
@@ -68,8 +81,8 @@ class ProconBot
     end
 
     ### 天気 ###
-    @bot.command :weather do |event|
-      event.respond(weather_message)
+    @bot.command :weather do |event, location|
+      event.respond(weather_message(location: location))
     end
 
     ### S先生の語録 ###
@@ -97,8 +110,37 @@ class ProconBot
   end
 
   ### 天気の取得、作文 ###
-  def weather_message
-    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{MISHIMA_CITY_ID}")
+  def weather_message(location: nil)
+    case location
+    when ("北海道" || "札幌" || "sapporo")
+      Selected_City = SAPPORO_CITY_ID
+    when ("東北" || "仙台" || "sendai")
+      Selected_City = SENDAI_CITY_ID
+    when ("北陸" || "富山" || "toyama")
+      Selected_City = TOYAMA_CITY_ID
+    when ("関東" || "東京" || "tokyo")
+      Selected_City = TOKYO_CITY_ID
+    when ("横浜" || "yokohama")
+      Selected_City = YOKOHAMA_CITY_ID
+    when ("三島" || "mishima")
+      Selected_City = MISHIMA_CITY_ID
+    when ("中部" || "名古屋" || "nagoya")
+      Selected_City = NAGOYA_CITY_ID
+    when ("近畿" || "大阪" || "osaka")
+      Selected_City = OSAKA_CITY_ID
+    when ("中国" || "広島" || "hiroshima")
+      Selected_City = HIROSHIMA_CITY_ID
+    when ("四国" || "松山" || "matsuyama")
+      Selected_City = MATSUYAMA_CITY_ID
+    when ("九州" || "福岡" || "fukuoka")
+      Selected_City = FUKUOKA_CITY_ID
+    when ("沖縄" || "那覇" || "okinawa" || "naha")
+      Selected_City = NAHA_CITY_ID
+    else
+      event.respond("デフォルトは三島です。\n引数に地方を入力してもいいのよ！\n")
+      Selected_City = MISHIMA_CITY_ID
+
+    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{Selected_City}")
     response = Net::HTTP.get_response(uri)
     res_json = JSON.parse(response.body)
 
@@ -242,7 +284,7 @@ class ProconBot
     message += "!date : 日にちをお伝えします。\n"
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
-    message += "!weather : 天気をお伝えします。\n"
+    message += "!weather : 天気をお伝えします。引数で地方を指定できます。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
     message += "!help : これです。\n"
