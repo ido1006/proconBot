@@ -137,7 +137,6 @@ class ProconBot
     when ("沖縄" || "那覇" || "okinawa" || "naha")
       selected_city = NAHA_CITY_ID
     else
-      event.respond("デフォルトは三島です。\n引数に地方を入力してもいいのよ！\n")
       selected_city = MISHIMA_CITY_ID
     end
 
@@ -285,7 +284,7 @@ class ProconBot
     message += "!date : 日にちをお伝えします。\n"
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
-    message += "!weather : 天気をお伝えします。引数で地方を指定できます。\n"
+    message += "!weather : 天気をお伝えします。引数で地方を指定できます。デフォルトは三島です。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
     message += "!help : これです。\n"
