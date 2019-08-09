@@ -113,34 +113,34 @@ class ProconBot
   def weather_message(location: nil)
     case location
     when ("北海道" || "札幌" || "sapporo")
-      Selected_City = SAPPORO_CITY_ID
+      selected_city = SAPPORO_CITY_ID
     when ("東北" || "仙台" || "sendai")
-      Selected_City = SENDAI_CITY_ID
+      selected_city = SENDAI_CITY_ID
     when ("北陸" || "富山" || "toyama")
-      Selected_City = TOYAMA_CITY_ID
+      selected_city = TOYAMA_CITY_ID
     when ("関東" || "東京" || "tokyo")
-      Selected_City = TOKYO_CITY_ID
+      selected_city = TOKYO_CITY_ID
     when ("横浜" || "yokohama")
-      Selected_City = YOKOHAMA_CITY_ID
+      selected_city = YOKOHAMA_CITY_ID
     when ("三島" || "mishima")
-      Selected_City = MISHIMA_CITY_ID
+      selected_city = MISHIMA_CITY_ID
     when ("中部" || "名古屋" || "nagoya")
-      Selected_City = NAGOYA_CITY_ID
+      selected_city = NAGOYA_CITY_ID
     when ("近畿" || "大阪" || "osaka")
-      Selected_City = OSAKA_CITY_ID
+      selected_city = OSAKA_CITY_ID
     when ("中国" || "広島" || "hiroshima")
-      Selected_City = HIROSHIMA_CITY_ID
+      selected_city = HIROSHIMA_CITY_ID
     when ("四国" || "松山" || "matsuyama")
-      Selected_City = MATSUYAMA_CITY_ID
+      selected_city = MATSUYAMA_CITY_ID
     when ("九州" || "福岡" || "fukuoka")
-      Selected_City = FUKUOKA_CITY_ID
+      selected_city = FUKUOKA_CITY_ID
     when ("沖縄" || "那覇" || "okinawa" || "naha")
-      Selected_City = NAHA_CITY_ID
+      selected_city = NAHA_CITY_ID
     else
       event.respond("デフォルトは三島です。\n引数に地方を入力してもいいのよ！\n")
-      Selected_City = MISHIMA_CITY_ID
+      selected_city = MISHIMA_CITY_ID
 
-    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{Selected_City}")
+    uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{selected_sity}")
     response = Net::HTTP.get_response(uri)
     res_json = JSON.parse(response.body)
 
