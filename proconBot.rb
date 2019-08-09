@@ -112,29 +112,29 @@ class ProconBot
   ### 天気の取得、作文 ###
   def weather_message(location: nil)
     case location
-    when ("北海道" || "札幌" || "sapporo")
+    when "北海道", "札幌","sapporo" then
       selected_city = SAPPORO_CITY_ID
-    when ("東北" || "仙台" || "sendai")
+    when "東北","仙台","sendai" then
       selected_city = SENDAI_CITY_ID
-    when ("北陸" || "富山" || "toyama")
+    when "北陸","富山","toyama" then
       selected_city = TOYAMA_CITY_ID
-    when ("関東" || "東京" || "tokyo")
+    when "関東","東京","tokyo" then
       selected_city = TOKYO_CITY_ID
-    when ("横浜" || "yokohama")
+    when "横浜","yokohama" then
       selected_city = YOKOHAMA_CITY_ID
-    when ("三島" || "mishima")
+    when "三島","mishima" then
       selected_city = MISHIMA_CITY_ID
-    when ("中部" || "名古屋" || "nagoya")
+    when "中部","名古屋","nagoya" then
       selected_city = NAGOYA_CITY_ID
-    when ("近畿" || "大阪" || "osaka")
+    when "近畿","大阪","osaka" then
       selected_city = OSAKA_CITY_ID
-    when ("中国" || "広島" || "hiroshima")
+    when "中国","広島","hiroshima" then
       selected_city = HIROSHIMA_CITY_ID
-    when ("四国" || "松山" || "matsuyama")
+    when "四国","松山","matsuyama" then
       selected_city = MATSUYAMA_CITY_ID
-    when ("九州" || "福岡" || "fukuoka")
+    when "九州","福岡","fukuoka" then
       selected_city = FUKUOKA_CITY_ID
-    when ("沖縄" || "那覇" || "okinawa" || "naha")
+    when "沖縄","那覇","okinawa","naha" then
       selected_city = NAHA_CITY_ID
     else
       selected_city = MISHIMA_CITY_ID
@@ -285,6 +285,7 @@ class ProconBot
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
     message += "!weather : 天気をお伝えします。引数で地方を指定できます。デフォルトは三島です。\n"
+    message += "対応してる都市とか書くのめんどかったのでコード読んで。それか多分地方名入れれば当たる。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
     message += "!help : これです。\n"
