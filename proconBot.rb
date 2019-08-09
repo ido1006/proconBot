@@ -139,6 +139,7 @@ class ProconBot
     else
       event.respond("デフォルトは三島です。\n引数に地方を入力してもいいのよ！\n")
       selected_city = MISHIMA_CITY_ID
+    end
 
     uri = URI.parse("#{LIVEDOOR_WEATHER_API_HOST}?city=#{selected_sity}")
     response = Net::HTTP.get_response(uri)
