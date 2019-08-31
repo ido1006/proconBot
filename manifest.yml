@@ -1,0 +1,5 @@
+applications:
+  - name: proconBot
+    command: ruby proconBot.rb
+    instances: 1
+    memory: 256M

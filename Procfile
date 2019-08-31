@@ -1,1 +1,0 @@
-bot: ruby proconBot.rb

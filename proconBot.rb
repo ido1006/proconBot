@@ -1,4 +1,5 @@
 # coding: utf-8
+
 #####
 # proconBot.rb
 # This is a discord bot for my club members.
@@ -7,7 +8,7 @@
 #   ruby proconBot.rb
 #
 # Copyright (c) 2019, K.Kanai
-#####
+####
 
 require "discordrb"
 require "net/http"
@@ -22,7 +23,7 @@ class ProconBot
 
   LIVEDOOR_WEATHER_API_HOST = "http://weather.livedoor.com/forecast/webservice/json/v1".freeze
 
-  SAPPORO_CITY_ID = 016010
+  HAKODATE_CITY_ID = 017010
   SENDAI_CITY_ID = 040010
   TOYAMA_CITY_ID = 160010
   TOKYO_CITY_ID = 130010
@@ -111,10 +112,11 @@ class ProconBot
 
   ### 天気の取得、作文 ###
   def weather_message(location: nil)
+    location ||= "mishima"
     flag = 0
     case location
-    when "北海道","札幌","sapporo" then
-      selected_city = SAPPORO_CITY_ID
+    when "北海道","函館","hakodate" then
+      selected_city = HAKODATE_CITY_ID
     when "東北","仙台","sendai" then
       selected_city = SENDAI_CITY_ID
     when "北陸","富山","toyama" then
@@ -123,7 +125,7 @@ class ProconBot
       selected_city = TOKYO_CITY_ID
     when "横浜","yokohama" then
       selected_city = YOKOHAMA_CITY_ID
-    when "三島","mishima","" then
+    when "三島","mishima" then
       selected_city = MISHIMA_CITY_ID
     when "中部","名古屋","nagoya" then
       selected_city = NAGOYA_CITY_ID
@@ -283,6 +285,9 @@ class ProconBot
     message
   end
 
+  def shell_message(sentence: nil)
+  end
+
   ### へるぷ ###
   def help_message
     message  = "!ping : 速度チェック。\n"
@@ -290,7 +295,6 @@ class ProconBot
     message += "!time : 時間をお伝えします。\n"
     message += "!dice : サイコロを振ります。引数があると、それを最大値とします。\n"
     message += "!weather : 天気をお伝えします。引数で地方を指定できます。デフォルトは三島です。\n"
-    message += "対応してる都市とか書くのめんどかったのでコード読んで。それか多分地方名入れれば当たる。\n"
     message += "!serizawa : 芹沢語録をお伝えします。引数があると、それを元にします。\n"
     message += "!musicwords : 音楽語録をお伝えします。引数に頭文字を入れるとそれを出します。「ん」にすると全部出ますけど、あんま使わないでね。\n"
     message += "!help : これです。\n"
